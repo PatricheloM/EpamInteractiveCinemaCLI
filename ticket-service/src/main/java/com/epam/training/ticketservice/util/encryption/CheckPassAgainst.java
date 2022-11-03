@@ -7,8 +7,7 @@ public class CheckPassAgainst {
 
     private static final AccountPrivilege ADMIN = AccountPrivilege.ADMIN;
 
-    public static boolean check(Account account, String hash, AccountPrivilege privilege)
-    {
+    public static boolean check(Account account, String hash, AccountPrivilege privilege) {
         boolean passCorrect = account.getPassword().equals(EncryptionFactory.encrypt(hash));
         return privilege == ADMIN ? passCorrect && account.getPrivilege() == ADMIN : passCorrect;
     }

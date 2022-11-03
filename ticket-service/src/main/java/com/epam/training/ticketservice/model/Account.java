@@ -2,7 +2,14 @@ package com.epam.training.ticketservice.model;
 
 import com.epam.training.ticketservice.model.enums.AccountPrivilege;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.GenerationType;
+import javax.persistence.Enumerated;
+import javax.persistence.EnumType;
 
 @Entity
 @Table(name = "account")
@@ -52,6 +59,12 @@ public class Account {
 
     @Override
     public String toString() {
-        return "Account [id=" + id + ", username=" + username + ", password=" + password + ", privilege=" + privilege.toString() + "]";
+        return "Account "
+                + "["
+                + "id=" + id + ", "
+                + "username=" + username + ", "
+                + "password=" + password + ", "
+                + "privilege=" + privilege.toString()
+                + "]";
     }
 }

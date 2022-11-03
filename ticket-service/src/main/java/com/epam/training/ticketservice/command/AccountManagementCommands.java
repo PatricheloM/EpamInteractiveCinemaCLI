@@ -31,9 +31,9 @@ public class AccountManagementCommands {
             account.setPrivilege(AccountPrivilege.USER);
             accountRepository.save(account);
             return null;
-        }
-        else
+        } else {
             return "Username already exists";
+        }
     }
 
     @ShellMethod(value = "Admin sign in.", key = "sign in privileged")
@@ -44,9 +44,9 @@ public class AccountManagementCommands {
             session.setPrivilege(AccountPrivilege.ADMIN);
             session.setLoggedIn(true);
             return null;
-        }
-        else
+        } else {
             return "Login failed due to incorrect credentials";
+        }
     }
 
     @ShellMethod(value = "User sign in.", key = "sign in")
@@ -57,9 +57,9 @@ public class AccountManagementCommands {
             session.setPrivilege(AccountPrivilege.USER);
             session.setLoggedIn(true);
             return null;
-        }
-        else
+        } else {
             return "Login failed due to incorrect credentials";
+        }
     }
 
     @ShellMethod(value = "Sign out of account", key = "sign out")
@@ -74,10 +74,10 @@ public class AccountManagementCommands {
     public String describeAccount() {
 
         if (session.getLoggedIn()) {
-            return session.getPrivilege() == AccountPrivilege.USER ?
-                    "Signed in with account '" + session.getUsername() + "'" : "Signed in with privileged account '" + session.getUsername() + "'";
-        }
-        else {
+            return session.getPrivilege() == AccountPrivilege.USER
+                    ? "Signed in with account '" + session.getUsername() + "'"
+                    : "Signed in with privileged account '" + session.getUsername() + "'";
+        } else {
             return "You are not signed in";
         }
     }

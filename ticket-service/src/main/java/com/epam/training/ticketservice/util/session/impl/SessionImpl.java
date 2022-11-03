@@ -40,6 +40,11 @@ public class SessionImpl implements Session {
 
     @Override
     public String toString() {
-        return "Session [username=" + username + ", privilege=" + privilege.toString() + ", is_current=" + loggedIn + "]";
+        return "Session "
+                + "["
+                + "username=" + username + ", "
+                + "privilege=" + privilege.toString() + ", "
+                + "is_current=" + loggedIn
+                + "]";
     }
 }

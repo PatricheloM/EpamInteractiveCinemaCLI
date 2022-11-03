@@ -20,9 +20,8 @@ public class EncryptionFactory {
                 hashText.insert(0, "0");
             }
             return hashText.toString();
-        }
 
-        catch (NoSuchAlgorithmException e) {
+        } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
     }
