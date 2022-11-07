@@ -62,7 +62,7 @@ public class AccountManagementCommands {
         }
     }
 
-    @ShellMethod(value = "Sign out of account", key = "sign out")
+    @ShellMethod(value = "Sign out of account.", key = "sign out")
     public String signOut() {
         session.setUsername(null);
         session.setPrivilege(null);
