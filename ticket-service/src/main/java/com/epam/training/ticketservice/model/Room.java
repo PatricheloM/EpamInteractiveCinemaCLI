@@ -1,6 +1,5 @@
 package com.epam.training.ticketservice.model;
 
-
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Column;
@@ -9,8 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 @Entity
-@Table(name = "movie")
-public class Movie {
+@Table(name = "room")
+public class Room {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,11 +18,11 @@ public class Movie {
     @Column(name = "name", unique = true, nullable = false)
     private String name;
 
-    @Column(name = "genre", nullable = false)
-    private String genre;
+    @Column(name = "rows", nullable = false)
+    private Integer rows;
 
-    @Column(name = "length", nullable = false)
-    private Integer length;
+    @Column(name = "columns", nullable = false)
+    private Integer columns;
 
     public Integer getId() {
         return id;
@@ -37,26 +36,31 @@ public class Movie {
         this.name = name;
     }
 
-    public String getGenre() {
-        return genre;
+    public Integer getRows() {
+        return rows;
     }
 
-    public void setGenre(String genre) {
-        this.genre = genre;
+    public void setRows(Integer rows) {
+        this.rows = rows;
     }
 
-    public Integer getLength() {
-        return length;
+    public Integer getColumns() {
+        return columns;
     }
 
-    public void setLength(Integer length) {
-        this.length = length;
+    public void setColumns(Integer columns) {
+        this.columns = columns;
+    }
+
+    public Integer getSeats() {
+        return rows * columns;
     }
 
     @Override
     public String toString() {
-        return name + " ("
-                + genre + ", "
-                + length + " minutes)";
+        return "Room " + name + " with "
+                + rows * columns + " seats, "
+                + rows + " rows and "
+                + columns + " columns";
     }
 }
