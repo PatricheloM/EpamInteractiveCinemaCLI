@@ -1,11 +1,15 @@
 package com.epam.training.ticketservice.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import java.util.List;
 
 @Entity
 @Table(name = "room")
@@ -23,6 +27,9 @@ public class Room {
 
     @Column(name = "columns", nullable = false)
     private Integer columns;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Screening> screenings;
 
     public Integer getId() {
         return id;
@@ -54,6 +61,10 @@ public class Room {
 
     public Integer getSeats() {
         return rows * columns;
+    }
+
+    public List<Screening> getScreenings() {
+        return screenings;
     }
 
     @Override

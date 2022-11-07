@@ -36,6 +36,12 @@
     <dependencies>
 
         <dependency>
+            <groupId>com.github.mawippel</groupId>
+            <artifactId>overlapping-date-ranges</artifactId>
+            <version>1.0.5</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-dependencies</artifactId>
             <version>${springframework-boot.version}</version>
