@@ -82,8 +82,8 @@ public class Screening {
     public String toString() {
         return movie.getName()
                 + " (" + movie.getGenre() + ", "
-                + movie.getLength() + " minutes), "
+                + movie.getLength() + " minutes),"
                 + " screened in room " + room.getName()
-                + " at " + LocalDateTimeConverter.localDateTimeToString(screeningStart);
+                + ", at " + LocalDateTimeConverter.localDateTimeToString(screeningStart);
     }
 }
