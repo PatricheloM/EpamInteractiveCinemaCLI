@@ -17,7 +17,7 @@ public class Movie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
     @Column(name = "name", unique = true, nullable = false)
     private String name;
@@ -31,7 +31,7 @@ public class Movie {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Screening> screenings;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 

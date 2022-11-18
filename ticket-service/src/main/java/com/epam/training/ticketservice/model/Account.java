@@ -17,7 +17,7 @@ public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
     @Column(name = "username", unique = true, nullable = false)
     private String username;
@@ -29,7 +29,7 @@ public class Account {
     @Enumerated(EnumType.STRING)
     private AccountPrivilege privilege;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 

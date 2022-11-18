@@ -21,7 +21,7 @@ public class Screening {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "movie.name")
@@ -40,7 +40,7 @@ public class Screening {
     @Column(name = "break_end", columnDefinition = "TIMESTAMP")
     private LocalDateTime breakEnd;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
