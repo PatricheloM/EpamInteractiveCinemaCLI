@@ -2,10 +2,10 @@ package com.epam.training.ticketservice.command;
 
 import com.epam.training.ticketservice.model.Account;
 import com.epam.training.ticketservice.util.encryption.EncryptionFactory;
+import com.epam.training.ticketservice.util.encryption.PasswordPrivilegeChecker;
 import com.epam.training.ticketservice.util.session.Session;
 import com.epam.training.ticketservice.model.enums.AccountPrivilege;
 import com.epam.training.ticketservice.repository.AccountRepository;
-import com.epam.training.ticketservice.util.encryption.CheckPassAgainst;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
@@ -39,7 +39,7 @@ public class AccountManagementCommands {
     @ShellMethod(value = "Admin sign in.", key = "sign in privileged")
     public String signInPrivileged(String username, String password) {
         Optional<Account> account = accountRepository.findByUsername(username);
-        if (account.isPresent() && CheckPassAgainst.check(account.get(), password, AccountPrivilege.ADMIN)) {
+        if (account.isPresent() && PasswordPrivilegeChecker.check(account.get(), password, AccountPrivilege.ADMIN)) {
             session.setUsername(account.get().getUsername());
             session.setPrivilege(AccountPrivilege.ADMIN);
             session.setLoggedIn(true);
@@ -52,7 +52,7 @@ public class AccountManagementCommands {
     @ShellMethod(value = "User sign in.", key = "sign in")
     public String signIn(String username, String password) {
         Optional<Account> account = accountRepository.findByUsername(username);
-        if (account.isPresent() && CheckPassAgainst.check(account.get(), password, AccountPrivilege.USER)) {
+        if (account.isPresent() && PasswordPrivilegeChecker.check(account.get(), password, AccountPrivilege.USER)) {
             session.setUsername(account.get().getUsername());
             session.setPrivilege(AccountPrivilege.USER);
             session.setLoggedIn(true);

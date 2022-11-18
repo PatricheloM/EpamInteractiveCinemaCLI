@@ -3,6 +3,8 @@ package com.epam.training.ticketservice.util.session.impl;
 import com.epam.training.ticketservice.model.enums.AccountPrivilege;
 import com.epam.training.ticketservice.util.session.Session;
 
+import java.util.Objects;
+
 
 public class SessionImpl implements Session {
 
@@ -36,6 +38,24 @@ public class SessionImpl implements Session {
 
     public void setLoggedIn(boolean current) {
         loggedIn = current;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        SessionImpl session = (SessionImpl) o;
+        return loggedIn == session.loggedIn && Objects.equals(username, session.username)
+                && privilege == session.privilege;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(username, privilege, loggedIn);
     }
 
     @Override
