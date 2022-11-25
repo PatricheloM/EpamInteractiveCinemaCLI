@@ -54,7 +54,7 @@ public class ScreeningCommands {
                 for (Screening screening : screeningRepository.findAll()) {
                     if (Objects.equals(roomExists.get().getName(), screening.getRoom().getName())
                                 && OverlappingVerificator.isOverlap(start,
-                                start.plusMinutes(movieExists.get().getLength() + 9),
+                                start.plusMinutes(movieExists.get().getLength()),
                                 screening.getScreeningStart(), screening.getScreeningEnd())) {
                         return "There is an overlapping screening";
                     } else if (Objects.equals(roomExists.get().getName(), screening.getRoom().getName())
